@@ -28,5 +28,15 @@ class IntrinsicDecomposition(object):
 
         # store here for visualization only
         self.shading_target = None
+    def copy(self):
+        ret = IntrinsicDecomposition(self.params, self.input)
+        ret.iter_num = self.iter_num
+        ret.stage_num = self.stage_num
+        ret.labels_nz = self.labels_nz.copy()
+        ret.intensities = self.intensities.copy()
+        ret.chromaticities = self.chromaticities.copy()
+        if self.shading_target is not None:
+            ret.shading_target = self.shading_target.copy()
+        return ret
 
    
